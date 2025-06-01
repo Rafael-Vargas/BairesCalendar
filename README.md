@@ -24,11 +24,9 @@ BairesCalendar/
 │   │   ├── ScheduleMeetingRequestDTO.cs 
 │   │   └── ScheduleMeetingResponseDTO.cs 
 │   ├── Interfaces/ 
-│   │   ├── ISchedulingService.cs 
-│   │   └── IUserService.cs 
+│   │   └── ISchedulingService.cs 
 │   └── Services/ 
-│       ├── SchedulingService.cs 
-│       └── UserService.cs 
+│       └── SchedulingService.cs 
 │ ├── BairesCalendar.Domain/                 # Domain layer (entities, exceptions) 
 │   ├── Entities/ 
 │   │   ├── Meeting.cs 
