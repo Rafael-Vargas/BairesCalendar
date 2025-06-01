@@ -51,7 +51,13 @@ BairesCalendar/
 ## Getting Started
 
 1. **Clone the repository**
-2. **Configure your database** in `appsettings.json`
+2. **Configure your database** in `appsettings.json`. I've used PostgreSQL, but you can use any database supported by EF Core.
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Host=localhost;Port=5432;Database=BairesCalendar;Username=postgres;Password=yourpassword"
+   }
+   ```
+   Make sure to replace `yourpassword` with your actual PostgreSQL password.
 3. **Open Prompt and point to API folder**
 4. **Run the following commands to apply migrations:**
 ```

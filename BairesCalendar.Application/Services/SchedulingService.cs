@@ -35,10 +35,6 @@ namespace BairesCalendar.Application.Services
             }
 
             // Determine the timezone for the desired start time.
-            // Prioritize RequestingUserTimeZoneId, otherwise default to a sensible UTC offset,
-            // or perhaps assume client's local timezone if not explicitly provided and a default isn't set.
-            // For simplicity, let's assume if not provided, the StartTime is already UTC.
-            // In a real system, you might get this from the requesting user's profile.
             TimeZoneInfo requestTimeZone;
             if (!string.IsNullOrEmpty(request.UserTimeZoneId))
             {
@@ -48,7 +44,7 @@ namespace BairesCalendar.Application.Services
                 }
                 catch (TimeZoneNotFoundException)
                 {
-                    _logger.LogError("RequestingUserTimeZoneId '{TimeZoneId}' not found.", request.UserTimeZoneId);
+                    _logger.LogError("UserTimeZoneId '{TimeZoneId}' not found.", request.UserTimeZoneId);
                     return new ScheduleMeetingResponseDTO
                     {
                         Success = false,
@@ -79,7 +75,7 @@ namespace BairesCalendar.Application.Services
                 };
             }
 
-            // 2. Conflict Detection
+            // Conflict detection
             var allParticipantMeetings = new List<Meeting>();
             foreach (var participant in participants)
             {
@@ -94,10 +90,7 @@ namespace BairesCalendar.Application.Services
                 allParticipantMeetings.AddRange(participantMeetings);
             }
 
-            // Deduplicate meetings if a meeting has multiple requested participants
-            var uniqueParticipantMeetings = allParticipantMeetings.Distinct().ToList();
-
-            foreach (var existingMeeting in uniqueParticipantMeetings)
+            foreach (var existingMeeting in allParticipantMeetings.Distinct().ToList())
             {
                 if (existingMeeting.OverlapsWith(startTimeUtc, EndTimeUtc))
                 {
@@ -120,7 +113,7 @@ namespace BairesCalendar.Application.Services
                 }
             }
 
-            // 3. Schedule the Meeting if no conflicts
+            // Schedule meeting if no conflicts
             var newMeeting = new Meeting(
                 request.Title,
                 startTimeUtc,
@@ -172,7 +165,7 @@ namespace BairesCalendar.Application.Services
                         isSlotFree = false;
                         // Move `currentSearchTime` past the end of the conflicting meeting
                         currentSearchTime = existingMeeting.EndTimeUtc;
-                        break; // Exit inner loop and try the new currentSearchTime
+                        break;
                     }
                 }
 
@@ -181,18 +174,14 @@ namespace BairesCalendar.Application.Services
                     // Found a free slot
                     suggestedSlots.Add(new TimeSlot(currentSearchTime, proposedEndUtc));
                     foundCount++;
-                    currentSearchTime = proposedEndUtc; // Move to the end of the just-found slot for the next search
+                    currentSearchTime = proposedEndUtc;
                 }
                 else
                 {
-                    // If a conflict was found and currentSearchTime was updated, the loop continues.
-                    // If no conflict was found with fetched meetings but `isSlotFree` is false
-                    // (this shouldn't happen with the logic above, but as a safeguard),
-                    // or if the loop continued without finding a conflict,
-                    // advance by a small increment to avoid getting stuck.
-                    if (currentSearchTime == proposedEndUtc) // Prevent infinite loop if no progress is made
+                    if (currentSearchTime == proposedEndUtc)
                     {
-                        currentSearchTime = currentSearchTime.Add(TimeSpan.FromMinutes(15)); // Try next 15 min block
+                        // Try next 15 min block
+                        currentSearchTime = currentSearchTime.Add(TimeSpan.FromMinutes(15));
                     }
                 }
             }
