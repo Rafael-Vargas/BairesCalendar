@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BairesCalendar.API", "BairesCalendar.API\BairesCalendar.API.csproj", "{7A34EB65-7780-489A-B9CE-18F6D11C027D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BairesCalendar.Application", "BairesCalendar.Application\BairesCalendar.Application.csproj", "{927A6A10-BD54-406D-8E7E-097A5F7AC7A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BairesCalendar.Domain", "BairesCalendar.Domain\BairesCalendar.Domain.csproj", "{B2019BF0-213C-4A27-AA80-E1EAD3EE3B75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BairesCalendar.Infrastructure", "BairesCalendar.Infrastructure\BairesCalendar.Infrastructure.csproj", "{99294504-0787-43BD-AD4E-3C5339F5FDCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BairesCalendar.UnitTests", "BairesCalendar.UnitTests\BairesCalendar.UnitTests.csproj", "{C740E05E-AA2E-4D6E-82D2-F00ABC0812D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BairesCalendar.IntegrationTests", "BairesCalendar.IntegrationTests\BairesCalendar.IntegrationTests.csproj", "{D21EE1BE-6385-4EA1-AC2E-0B84EBA72378}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A34EB65-7780-489A-B9CE-18F6D11C027D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A34EB65-7780-489A-B9CE-18F6D11C027D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A34EB65-7780-489A-B9CE-18F6D11C027D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A34EB65-7780-489A-B9CE-18F6D11C027D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{927A6A10-BD54-406D-8E7E-097A5F7AC7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{927A6A10-BD54-406D-8E7E-097A5F7AC7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{927A6A10-BD54-406D-8E7E-097A5F7AC7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{927A6A10-BD54-406D-8E7E-097A5F7AC7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2019BF0-213C-4A27-AA80-E1EAD3EE3B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2019BF0-213C-4A27-AA80-E1EAD3EE3B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2019BF0-213C-4A27-AA80-E1EAD3EE3B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2019BF0-213C-4A27-AA80-E1EAD3EE3B75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99294504-0787-43BD-AD4E-3C5339F5FDCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99294504-0787-43BD-AD4E-3C5339F5FDCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99294504-0787-43BD-AD4E-3C5339F5FDCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99294504-0787-43BD-AD4E-3C5339F5FDCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C740E05E-AA2E-4D6E-82D2-F00ABC0812D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C740E05E-AA2E-4D6E-82D2-F00ABC0812D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C740E05E-AA2E-4D6E-82D2-F00ABC0812D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C740E05E-AA2E-4D6E-82D2-F00ABC0812D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D21EE1BE-6385-4EA1-AC2E-0B84EBA72378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D21EE1BE-6385-4EA1-AC2E-0B84EBA72378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D21EE1BE-6385-4EA1-AC2E-0B84EBA72378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D21EE1BE-6385-4EA1-AC2E-0B84EBA72378}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CAA72D2-460C-495D-AF21-DA817F1161B1}
+	EndGlobalSection
+EndGlobal
