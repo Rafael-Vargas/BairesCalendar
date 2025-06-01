@@ -81,7 +81,6 @@ namespace BairesCalendar.Application.Services
             {
                 // Load existing meetings for each participant
                 // Only load meetings that could potentially overlap with the desired slot.
-                // This optimization is crucial for performance with many meetings per user.
                 var participantMeetings = await _dbContext.Entry(participant)
                     .Collection(u => u.Meetings)
                     .Query()
@@ -147,9 +146,6 @@ namespace BairesCalendar.Application.Services
             {
                 var proposedEndUtc = currentSearchTime.Add(duration);
 
-                // Fetch relevant meetings for all participants within the current search window
-                // This query fetches all meetings involving any of the participants that could potentially overlap
-                // with `currentSearchTime` to `proposedEndUtc`.
                 var overlappingMeetings = await _dbContext.Meetings
                     .Where(m => m.Participants.Any(p => participantIds.Contains(p.Id)) &&
                                 m.StartTimeUtc < proposedEndUtc &&
@@ -163,7 +159,6 @@ namespace BairesCalendar.Application.Services
                     if (existingMeeting.OverlapsWith(currentSearchTime, proposedEndUtc))
                     {
                         isSlotFree = false;
-                        // Move `currentSearchTime` past the end of the conflicting meeting
                         currentSearchTime = existingMeeting.EndTimeUtc;
                         break;
                     }

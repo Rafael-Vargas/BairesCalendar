@@ -272,7 +272,7 @@ namespace BairesCalendar.UnitTests.Services
                 Title = "Test Meeting",
                 StartTime = new DateTime(2025, 5, 30, 10, 0, 0),
                 Duration = TimeSpan.FromHours(1),
-                ParticipantIds = new List<Guid> { user1.Id },
+                ParticipantIds = [user1.Id],
                 UserTimeZoneId = "America/Invalid_TZ"
             };
 
